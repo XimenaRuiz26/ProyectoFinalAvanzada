@@ -10,8 +10,8 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Localidad {
-    String nombre;
-    Float precio;
-    int entradasVendidas;
-    int aforo;
+    private String nombre;
+    private Float precio;
+    private int entradasVendidas;
+    private int aforo;
 }

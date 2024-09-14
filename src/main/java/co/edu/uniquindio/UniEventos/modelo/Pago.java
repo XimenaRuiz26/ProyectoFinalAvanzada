@@ -1,9 +1,6 @@
 package co.edu.uniquindio.UniEventos.modelo;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -12,18 +9,19 @@ import java.time.LocalDateTime;
 
 @Getter
 @Setter
-@NoArgsConstructor
+@ToString
+@Builder
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @AllArgsConstructor
-@Document("pagos")
+@NoArgsConstructor
 public class Pago {
-    @Id
-    String id;
-    LocalDateTime fecha;
-    String tipoPago;
-    String moneda;
-    String detalleEstado;
-    String estado;
-    String codigoAutorizacion;
-    Float valorTransaccion;
-
+    @EqualsAndHashCode.Include
+    private String id;
+    private LocalDateTime fecha;
+    private String tipoPago;
+    private String moneda;
+    private String detalleEstado;
+    private String estado;
+    private String codigoAutorizacion;
+    private Float valorTransaccion;
 }

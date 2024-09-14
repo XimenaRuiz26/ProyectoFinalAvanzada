@@ -1,9 +1,6 @@
 package co.edu.uniquindio.UniEventos.modelo;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -11,19 +8,23 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import java.time.LocalDateTime;
 import java.util.List;
 
+@Document("ordenes")
 @Getter
 @Setter
-@NoArgsConstructor
+@ToString
+@Builder
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @AllArgsConstructor
-@Document("ordenes")
+@NoArgsConstructor
 public class Orden {
     @Id
-    String id;
-    ObjectId idUser;
-    LocalDateTime fecha;
-    List<DetalleOrden> items;
-    Pago pago;
-    ObjectId idCupon;
-    Float total;
-    String codigoPasarela;
+    @EqualsAndHashCode.Include
+    private String id;
+    private ObjectId idUser;
+    private LocalDateTime fecha;
+    private List<DetalleOrden> items;
+    private Pago pago;
+    private ObjectId idCupon;
+    private float total;
+    private String codigoPasarela;
 }

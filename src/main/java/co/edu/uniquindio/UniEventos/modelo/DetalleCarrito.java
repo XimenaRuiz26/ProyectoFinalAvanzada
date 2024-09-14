@@ -5,11 +5,13 @@ import org.bson.types.ObjectId;
 
 @Getter
 @Setter
-@NoArgsConstructor
+@ToString
 @Builder
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @AllArgsConstructor
+@NoArgsConstructor
 public class DetalleCarrito {
-    String id;
-    ObjectId idEvento;
-    String nombreLocalidad;
+    private String id;
+    private ObjectId idEvento;
+    private String nombreLocalidad;
 }

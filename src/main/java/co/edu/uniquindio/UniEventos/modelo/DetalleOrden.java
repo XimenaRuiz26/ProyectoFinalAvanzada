@@ -1,19 +1,19 @@
 package co.edu.uniquindio.UniEventos.modelo;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.bson.types.ObjectId;
 
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
+@ToString
 public class DetalleOrden {
-    String id;
-    ObjectId idEvento;
-    String nombreLocalidad;
-    int cantidad;
-    Float precio;
+    @EqualsAndHashCode.Include
+    private String id;
+    private ObjectId idEvento;
+    private String nombreLocalidad;
+    private int cantidad;
+    private Float precio;
 }

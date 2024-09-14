@@ -2,16 +2,19 @@ package co.edu.uniquindio.UniEventos.modelo;
 
 import lombok.*;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
+@Document("cuentas")
 @Getter
 @Setter
-@NoArgsConstructor
 @Builder
+@NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode(onlyExplicitlyIncluded = true)
+@EqualsAndHashCode(onlyExplicitlyIncluded = true, callSuper = false)
+@ToString
 public class Cuenta {
     @Id
     @EqualsAndHashCode.Include
@@ -25,5 +28,4 @@ public class Cuenta {
     private CodigoValidacion codigoValidacionRegistro;
     private CodigoValidacion codigoValidacionPassword;
     private List<String> busquedasEventos;
-
 }
