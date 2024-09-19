@@ -1,34 +1,29 @@
 package co.edu.uniquindio.UniEventos.servicios.implementaciones;
 
 import co.edu.uniquindio.UniEventos.servicios.interfaces.ImagenesServicio;
+import com.google.cloud.storage.*;
+import com.google.firebase.cloud.StorageClient;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
+import java.util.UUID;
 
 @Service
 public class ImagenesServicioImpl implements ImagenesServicio {
-
-    private final Cloudinary cloudinary;
-    public ImagenesServicioImpl(){
-        Map<String, String> config = new HashMap<>();
-        config.put("cloud_name", "dk0vyi7yi");
-        config.put("api_key", "444834788181461");
-        config.put("api_secret", "bMFA0ikjKLLkZAc-M5OqbLdOcd4");
-        cloudinary = new Cloudinary(config);
+    @Override
+    public String subirImagen(MultipartFile multipartFile) throws Exception{
+        Bucket bucket = StorageClient.getInstance().bucket();
+        String fileName = String.format( "%s-%s", UUID.randomUUID().toString(), multipartFile.getOriginalFilename() );
+        Blob blob = bucket.create( fileName, multipartFile.getInputStream(), multipartFile.getContentType() );
+        return String.format(
+                "https://firebasestorage.googleapis.com/v0/b/%s/o/%s?alt=media",
+                bucket.getName(),
+                blob.getName()
+        );
     }
     @Override
-    public Map subiImagen(MultipartFile imagen) throws Exception {
-        File file = convertir(imagen);
-        return cloudinary.uploader().upload(file, ObjectUtils.asMap("folder", "UniLocal"));
-    }
-
-    @Override
-    public Map eliminarImagen(String idImagen) throws Exception {
-        return cloudinary.uploader().destroy(idImagen, ObjectUtils.emptyMap());
-    }
-    private File convertir(MultipartFile imagen) throws IOException {
-        File file = File.createTempFile(imagen.getOriginalFilename(), null);
-        FileOutputStream fos = new FileOutputStream(file);
-        fos.write(imagen.getBytes());
-        fos.close();
-        return file;
+    public void eliminarImagen(String nombreImagen) throws Exception{
+        Bucket bucket = StorageClient.getInstance().bucket();
+        Blob blob = bucket.get(nombreImagen);
+        blob.delete();
     }
 }
