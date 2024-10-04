@@ -26,6 +26,16 @@ public class CuponServicioImpl implements CuponServicio {
     }
 
     @Override
+    public void activarCupon(String idCupon) {
+
+    }
+
+    @Override
+    public void desactivarCupon(String idCupon) {
+
+    }
+
+    @Override
     public boolean validarCupon(String idCupon, String userId) {
         return false;
     }

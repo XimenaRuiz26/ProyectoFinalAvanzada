@@ -9,18 +9,18 @@ import java.io.IOException;
 
 @Configuration
 public class FirebaseConfig {
-    @Bean
-    public FirebaseApp intializeFirebase() throws IOException {
-        FileInputStream serviceAccount = new FileInputStream(
-                "src/main/resources/NOMBRE_ARCHIVO.json"
-        );
-        FirebaseOptions options = FirebaseOptions.builder()
-                .setCredentials(GoogleCredentials.fromStream(serviceAccount))
-                .setStorageBucket("NOMBRE_BUCKET")
-                .build();
-        if(FirebaseApp.getApps().isEmpty()) {
-            return FirebaseApp.initializeApp(options);
-        }
-        return null;
-    }
+//    @Bean
+//    public FirebaseApp intializeFirebase() throws IOException {
+//        FileInputStream serviceAccount = new FileInputStream(
+//                "src/main/resources/NOMBRE_ARCHIVO.json"
+//        );
+//        FirebaseOptions options = FirebaseOptions.builder()
+//                .setCredentials(GoogleCredentials.fromStream(serviceAccount))
+//                .setStorageBucket("NOMBRE_BUCKET")
+//                .build();
+//        if(FirebaseApp.getApps().isEmpty()) {
+//            return FirebaseApp.initializeApp(options);
+//        }
+//        return null;
+//    }
 }

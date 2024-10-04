@@ -7,10 +7,9 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import java.time.LocalDateTime;
 import java.util.List;
 
-@Document("cuentas")
+@Document(collection = "cuentas")
 @Getter
 @Setter
-@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true, callSuper = false)
@@ -28,4 +27,16 @@ public class Cuenta {
     private CodigoValidacion codigoValidacionRegistro;
     private CodigoValidacion codigoValidacionPassword;
     private List<String> busquedasEventos;
+
+    @Builder
+    public Cuenta(Usuario user, String email, String password, CodigoValidacion codValidacionPassword, CodigoValidacion codValidacionRegistro, LocalDateTime fechaRegistro, Rol rol, EstadoCuenta estado) {
+        this.user = user;
+        this.email = email;
+        this.password = password;
+        this.codigoValidacionPassword = codValidacionPassword;
+        this.codigoValidacionRegistro = codValidacionRegistro;
+        this.fechaRegistro = fechaRegistro;
+        this.rol = rol;
+        this.estado = estado;
+    }
 }

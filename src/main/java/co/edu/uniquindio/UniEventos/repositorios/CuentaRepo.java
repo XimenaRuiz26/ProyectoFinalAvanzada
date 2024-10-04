@@ -1,6 +1,4 @@
 package co.edu.uniquindio.UniEventos.repositorios;
-
-import co.edu.uniquindio.UniEventos.modelo.Carrito;
 import co.edu.uniquindio.UniEventos.modelo.Cuenta;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.mongodb.repository.Query;
