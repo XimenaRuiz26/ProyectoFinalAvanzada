@@ -12,8 +12,9 @@ public class CodigoValidacion {
     private String codigo;
     private LocalDateTime fechaCreacion;
 
-    public CodigoValidacion(LocalDateTime fechaCreacion, String codigo) {
+    public CodigoValidacion(String codigo) {
         this.fechaCreacion = fechaCreacion;
         this.codigo = codigo;
     }
+
 }

@@ -17,4 +17,7 @@ public class Usuario {
     private String cedula;
     private String telefono;
     private String direccion;
+
+    public Usuario(String nombre, String direccion, String telefono) {
+    }
 }

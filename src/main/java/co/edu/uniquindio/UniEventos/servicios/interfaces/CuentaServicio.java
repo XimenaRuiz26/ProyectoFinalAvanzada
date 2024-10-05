@@ -10,8 +10,6 @@ public interface CuentaServicio {
 
     boolean activarCuenta(ActivarCuentaDTO activarCuentaDTO) throws Exception;
 
-    String generarCodigo();
-
     String editarCuenta(EditarCuentaDTO cuenta) throws Exception;
 
     String eliminarCuenta(String id) throws Exception;
