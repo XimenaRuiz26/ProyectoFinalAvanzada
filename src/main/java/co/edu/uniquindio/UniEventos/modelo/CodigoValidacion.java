@@ -11,10 +11,12 @@ import java.time.LocalDateTime;
 public class CodigoValidacion {
     private String codigo;
     private LocalDateTime fechaCreacion;
-
     public CodigoValidacion(String codigo) {
         this.fechaCreacion = fechaCreacion;
         this.codigo = codigo;
     }
-
+    public boolean isExpired() {
+        // Verifica si han pasado más de 15 minutos desde la creación
+        return fechaCreacion.plusMinutes(15).isBefore(LocalDateTime.now());
+    }
 }

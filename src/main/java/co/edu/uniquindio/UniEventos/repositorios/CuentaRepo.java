@@ -9,12 +9,15 @@ import java.util.Optional;
 @Repository
 public interface CuentaRepo extends MongoRepository<Cuenta, String> {
     @Query("{email:  ?0}")
-    Optional<Cuenta> buscarEmail(String correo);
+    Cuenta buscarEmail(String correo);
 
     @Query("{id: ?0}")
     boolean buscarId(String id);
 
-    @Query("{email:  ?0, password:  ?1}")
-    Optional<Cuenta> validarDatosAutentificacion(String email, String password);
+    @Query("{email:  ?0}")
+    Optional<Cuenta> byFindEmail(String email);
+
+    @Query("{'cedula':  ?0}")
+    Optional<Cuenta> byFindCedula(String cedula);
 
 }

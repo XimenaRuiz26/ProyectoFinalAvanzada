@@ -13,6 +13,8 @@ public interface CuponServicio {
     boolean validarCupon(String idCupon, String userId);
     String redimirCupon(String idCupon, String idCliente);
 
+    String generarCodigoCupon();
+
     InfoCuponDTO listarCupones(String idCupon, String idCliente);
 
 }

@@ -6,6 +6,8 @@ import co.edu.uniquindio.UniEventos.dto.CuponDTO.InfoCuponDTO;
 import co.edu.uniquindio.UniEventos.servicios.interfaces.CuponServicio;
 import org.springframework.stereotype.Service;
 
+import java.security.SecureRandom;
+
 @Service
 public class CuponServicioImpl implements CuponServicio {
 
@@ -43,6 +45,19 @@ public class CuponServicioImpl implements CuponServicio {
     @Override
     public String redimirCupon(String idCupon, String idCliente) {
         return null;
+    }
+
+    @Override
+    public String generarCodigoCupon() {
+        String caracteres = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+        int tam = 10;
+        SecureRandom random = new SecureRandom();
+        StringBuilder codigo= new StringBuilder(tam);
+        for (int i = 0; i < tam; i++) {
+            int index = random.nextInt(caracteres.length());
+            codigo.append(caracteres.charAt(index));
+        }
+        return codigo.toString();
     }
 
     @Override
