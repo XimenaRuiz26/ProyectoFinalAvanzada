@@ -1,6 +1,7 @@
 package co.edu.uniquindio.UniEventos.servicios.implementaciones;
 
 import co.edu.uniquindio.UniEventos.dto.CuentaDTO.*;
+import co.edu.uniquindio.UniEventos.dto.TokenDTO;
 import co.edu.uniquindio.UniEventos.modelo.*;
 import co.edu.uniquindio.UniEventos.repositorios.CuentaRepo;
 import co.edu.uniquindio.UniEventos.servicios.interfaces.CuentaServicio;
@@ -8,6 +9,7 @@ import co.edu.uniquindio.UniEventos.servicios.interfaces.CuentaServicio;
 import java.security.SecureRandom;
 import java.time.Duration;
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Optional;
 
 public class CuentaServicioImpl implements CuentaServicio {
@@ -172,7 +174,7 @@ public class CuentaServicioImpl implements CuentaServicio {
 
 
     @Override
-    public String iniciarSesion(LoginDTO loginDTO) throws Exception {
+    public TokenDTO iniciarSesion(LoginDTO loginDTO) throws Exception {
         Optional<Cuenta> cuentaOptional = cuentaRepo.buscarEmail(loginDTO.email());
 
         if (cuentaOptional.isEmpty()) {
@@ -189,6 +191,10 @@ public class CuentaServicioImpl implements CuentaServicio {
         return "";
     }
 
+    @Override
+    public List<InfoCuentaDTO> listarCuentas() {
+        return null;
+    }
 
 
     private boolean existeEmail(String email) {

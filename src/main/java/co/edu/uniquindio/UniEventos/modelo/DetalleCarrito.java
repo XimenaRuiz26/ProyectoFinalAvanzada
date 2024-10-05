@@ -12,6 +12,10 @@ import org.bson.types.ObjectId;
 @NoArgsConstructor
 public class DetalleCarrito {
     private String id;
-    private ObjectId idEvento;
+    private String idEvento;
+    private String nombreEvento;
     private String nombreLocalidad;
+    private double precio;
+    private int cantidad;
+    private double subtotal;
 }

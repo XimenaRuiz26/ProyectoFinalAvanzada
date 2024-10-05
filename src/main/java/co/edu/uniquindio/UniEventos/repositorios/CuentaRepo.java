@@ -12,7 +12,7 @@ public interface CuentaRepo extends MongoRepository<Cuenta, String> {
     Optional<Cuenta> buscarEmail(String correo);
 
     @Query("{id: ?0}")
-    Optional<Cuenta> buscarId(String id);
+    boolean buscarId(String id);
 
     @Query("{email:  ?0, password:  ?1}")
     Optional<Cuenta> validarDatosAutentificacion(String email, String password);

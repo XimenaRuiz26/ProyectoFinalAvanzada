@@ -21,8 +21,18 @@ public class Carrito {
     @Id
     @EqualsAndHashCode.Include
     private String id;
-    private ObjectId idUser;
+    private String idUser;
     private LocalDateTime fecha;
     private List<DetalleCarrito> items;
+    private double total;
 
+    public void calcularTotal() {
+        if (items != null) {
+            this.total = items.stream()
+                    .mapToDouble(item -> item.getPrecio() * item.getCantidad())
+                    .sum();
+        } else {
+            this.total = 0;
+        }
+    }
 }
