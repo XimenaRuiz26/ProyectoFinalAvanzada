@@ -6,7 +6,6 @@ import co.edu.uniquindio.UniEventos.modelo.TipoCupon;
 import java.time.LocalDateTime;
 
 public record InfoCuponDTO(
-        String id,
         String nombre,
         String codigo,
         float descuento,
