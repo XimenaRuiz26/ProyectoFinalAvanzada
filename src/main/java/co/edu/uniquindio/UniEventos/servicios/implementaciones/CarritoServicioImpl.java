@@ -44,7 +44,7 @@ public class CarritoServicioImpl implements CarritoServicio {
         // Verificar si el ítem ya existe en el carrito y calcular la cantidad total
         int cantidadTotal = calcularCantidadTotal(carrito, itemCarritoDTO, evento);
         // Verificar aforo
-        if (cantidadTotal > localidad.getAforo()) {
+        if (cantidadTotal > localidad.getAforo()-localidad.getEntradasVendidas()) {
             throw new IllegalArgumentException("No se puede agregar el ítem al carrito porque el aforo de la localidad está completo.");
         }
         // Crear el nuevo ítem del carrito

@@ -29,10 +29,7 @@ public interface EventoRepo extends MongoRepository<Evento, String> {
     @Query("{ciudad: ?0}")
     List<Evento> buscarPorCiudad(String ciudad);
 
-    @Query("{estado: ?0}")
-    List<Evento> buscarPorEstado(EstadoEvento estado);
-
     @Query("{alojamientosCercanos: { $exists: true, $not: { $size: 0 } }}")
-    List<Evento> buscarConAlojamientosCercanos();
+    List<Evento> buscarConAlojamientosCercanos(String ciudad, String direccion);
 
 }

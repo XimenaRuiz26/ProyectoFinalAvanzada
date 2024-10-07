@@ -20,7 +20,7 @@ public record CrearEventoDTO(
         @NotBlank(message = "El tipo de evento es obligatorio") TipoEvento tipo,
         @URL(message = "La URL de la imagen del poster debe ser válida") String imagenPortada,
         @URL(message = "La URL de la imagen de localidades debe ser válida") String imagenLocalidad,
-        @NotNull(message = "La lista de localidades es obligatoria") List<Localidad> localidades,
+        @NotNull(message = "La lista de localidades es obligatoria") List<LocalidadDTO> localidades,
         @NotNull(message = "La lista de alojamientos es obligatoria") List<Alojamiento> alojamientosCercanos
 ) {
 }

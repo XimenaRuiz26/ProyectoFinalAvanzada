@@ -12,7 +12,6 @@ public record InfoEventoDTO(
         String nombre,
         String descripcion,
         String direccion,
-        String imagenesLocalidades,
         TipoEvento tipoEvento,
         LocalDateTime fecha,
         String ciudad,

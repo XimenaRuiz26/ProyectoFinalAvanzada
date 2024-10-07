@@ -1,6 +1,7 @@
 package co.edu.uniquindio.UniEventos.dto.EventoDTO;
 
 import co.edu.uniquindio.UniEventos.modelo.Alojamiento;
+import co.edu.uniquindio.UniEventos.modelo.EstadoEvento;
 import co.edu.uniquindio.UniEventos.modelo.Localidad;
 import co.edu.uniquindio.UniEventos.modelo.TipoEvento;
 import jakarta.validation.constraints.NotBlank;
@@ -19,9 +20,11 @@ public record EditarEventoDTO(
         @NotBlank(message = "La ciudad es obligatoria") @Size(max = 60, message = "La ciudad no puede exceder los 60 caracteres") String ciudad,
         @NotNull(message = "La fecha es obligatoria") LocalDateTime fecha,
         @NotBlank(message = "El tipo de evento es obligatorio") TipoEvento tipo,
+        @NotBlank(message = "El estado del evento es obligatorio") EstadoEvento estado,
+
         @URL(message = "La URL de la imagen del poster debe ser válida") String imagenPoster,
         @URL(message = "La URL de la imagen de localidades debe ser válida") String imagenLocalidades,
-        @NotNull(message = "La lista de localidades es obligatoria") List<Localidad> localidades,
+        @NotNull(message = "La lista de localidades es obligatoria") List<LocalidadDTO> localidades,
         @NotNull(message = "La lista de alojamientos es obligatoria") List<Alojamiento> alojamientosCercanos
 ) {
 }

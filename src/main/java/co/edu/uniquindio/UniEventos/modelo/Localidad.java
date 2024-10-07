@@ -14,4 +14,10 @@ public class Localidad {
     private Float precio;
     private int entradasVendidas;
     private int aforo;
+
+    public Localidad(String nombre, int capacidadMaxima, float precio) {
+        this.nombre = nombre;
+        this.aforo = capacidadMaxima;
+        this.precio = precio;
+    }
 }
