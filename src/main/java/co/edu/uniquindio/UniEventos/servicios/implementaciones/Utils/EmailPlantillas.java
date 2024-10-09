@@ -1,5 +1,11 @@
 package co.edu.uniquindio.UniEventos.servicios.implementaciones.Utils;
 
+import co.edu.uniquindio.UniEventos.modelo.*;
+import co.edu.uniquindio.UniEventos.servicios.interfaces.CuentaServicio;
+import co.edu.uniquindio.UniEventos.servicios.interfaces.CuponServicio;
+import co.edu.uniquindio.UniEventos.servicios.interfaces.EmailServicio;
+import co.edu.uniquindio.UniEventos.servicios.interfaces.EventoServicio;
+
 public class EmailPlantillas {
 
     public static String obtenerMensajeCodigoValidacion(String codigoValidacion) {

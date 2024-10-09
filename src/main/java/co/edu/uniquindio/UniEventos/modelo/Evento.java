@@ -31,4 +31,17 @@ public class Evento {
     private List<Localidad> localidades;
     private List<Alojamiento> alojamientosCercanos;
 
+    public Localidad obtenerLocalidad(String nombre) throws Exception {
+        for(Localidad localidad: localidades){
+            if(localidad.getNombre().equals(nombre)){
+                return localidad;
+
+            }else{
+                throw new Exception("La localidad no existe");
+
+            }
+        }
+        return null;
+    }
+
 }

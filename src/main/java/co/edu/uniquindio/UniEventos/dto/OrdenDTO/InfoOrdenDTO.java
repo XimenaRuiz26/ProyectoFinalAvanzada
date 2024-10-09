@@ -8,12 +8,10 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 public record InfoOrdenDTO(
-        ObjectId idUser,
-        LocalDateTime fecha,
-        String codigoPasarela,
-        List<DetalleOrden> items,
-        Pago pago,
         String id,
-        float total,
-        ObjectId idCupon) {
+        String idUser,
+        LocalDateTime fecha,
+        List<ItemOrdenDTO> items,
+        float total
+       ) {
 }

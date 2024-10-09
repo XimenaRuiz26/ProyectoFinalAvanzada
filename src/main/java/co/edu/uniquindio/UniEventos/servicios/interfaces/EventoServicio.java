@@ -34,4 +34,6 @@ public interface EventoServicio {
     Evento obtenerEvento(String id) throws EventoException;
 
     List<Evento> getAll();
+
+    void actualizarCapacidadLocalidad(Evento evento, String nombreLocalidad, int entradasVendidas) throws Exception;
 }

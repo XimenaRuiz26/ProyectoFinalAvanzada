@@ -18,10 +18,10 @@ public class Pago {
     @EqualsAndHashCode.Include
     private String id;
     private LocalDateTime fecha;
-    private String tipoPago;
+    private TipoPago tipoPago;
     private String moneda;
     private String detalleEstado;
-    private String estado;
+    private EstadoPago estado;
     private String codigoAutorizacion;
     private Float valorTransaccion;
 }

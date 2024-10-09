@@ -3,9 +3,7 @@ package co.edu.uniquindio.UniEventos.servicios.implementaciones;
 import co.edu.uniquindio.UniEventos.config.JWTUtils;
 import co.edu.uniquindio.UniEventos.dto.CuentaDTO.*;
 import co.edu.uniquindio.UniEventos.dto.CuponDTO.CrearCuponDTO;
-import co.edu.uniquindio.UniEventos.dto.EmailDTO.EmailDTO;
 import co.edu.uniquindio.UniEventos.dto.TokenDTO;
-import co.edu.uniquindio.UniEventos.excepciones.CarritoException;
 import co.edu.uniquindio.UniEventos.excepciones.CuentaException;
 import co.edu.uniquindio.UniEventos.modelo.*;
 import co.edu.uniquindio.UniEventos.repositorios.CuentaRepo;
@@ -18,7 +16,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.security.SecureRandom;
-import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Map;
@@ -113,7 +110,7 @@ public class CuentaServicioImpl implements CuentaServicio {
     }
 
     private CrearCuponDTO generarCuponBienvenida() {
-        // Creamos el cupon de 15% de descueto
+        // Creamos el cupon de 15% de descuento
         return new CrearCuponDTO(
                 cuponServicio.generarCodigoCupon(),
                 "Cupón de Bienvenida",
@@ -175,6 +172,15 @@ public class CuentaServicioImpl implements CuentaServicio {
             throw new Exception("No existe la cuenta");
         }
         return cuentaOptional.get();
+    }
+
+    @Override
+    public Cuenta obtenerCuentaXEmail(String email) throws Exception {
+        Optional<Cuenta> cuentaOpt = cuentaRepo.byFindEmail(email);
+        if (cuentaOpt.isEmpty()) {
+            throw new Exception("Este email no esta registrado");
+        }
+        return cuentaOpt.get();
     }
 
     @Override

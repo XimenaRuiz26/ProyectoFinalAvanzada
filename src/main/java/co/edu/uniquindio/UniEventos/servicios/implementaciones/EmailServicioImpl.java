@@ -8,10 +8,13 @@ import org.simplejavamail.api.mailer.Mailer;
 import org.simplejavamail.api.mailer.config.TransportStrategy;
 import org.simplejavamail.email.EmailBuilder;
 import org.simplejavamail.mailer.MailerBuilder;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
-import static org.simplejavamail.config.ConfigLoader.Property.SMTP_PORT;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
+
 @Service
 public class EmailServicioImpl implements EmailServicio {
     @Override
@@ -30,6 +33,34 @@ public class EmailServicioImpl implements EmailServicio {
                 .withDebugLogging(true)
                 .buildMailer()) {
             mailer.sendMail(email);
+        }
+    }
+
+    @Override
+    public void enviarQR(EmailDTO emailDTO, byte[] qrCodeImage, String qrCodeContentId) throws Exception {
+        Email email = EmailBuilder.startingBlank()
+                .from("unieventos.boomticket@gmail.com")
+                .to(emailDTO.destinatario())
+                .withSubject(emailDTO.asunto())
+                .withHTMLText(emailDTO.cuerpo())
+                .withEmbeddedImage(qrCodeContentId, qrCodeImage, "image/png")
+                .buildEmail();
+
+        try (Mailer mailer = MailerBuilder
+                .withSMTPServer("smtp.gmail.com", 587, "unieventos.boomticket@gmail.com", "wqou zcfn fbcn gbtx")
+                .withTransportStrategy(TransportStrategy.SMTP_TLS)
+                .withDebugLogging(true)
+                .buildMailer()) {
+
+            mailer.sendMail(email);
+        }
+    }
+
+    @Override
+    public byte[] downloadImage(String imageUrl) throws IOException {
+        URL url = new URL(imageUrl);
+        try (InputStream in = url.openStream()) {
+            return in.readAllBytes();
         }
     }
 
@@ -56,4 +87,5 @@ public class EmailServicioImpl implements EmailServicio {
         String mensaje = EmailPlantillas.obtenerMensajeCuponCompra(codigoCupon);
         enviarCorreo(new EmailDTO(email, "¡Gracias por tu compra! Aquí tienes un 10% de descuento en tu próxima entrada \uD83C\uDF81", mensaje));
     }
+
 }

@@ -17,6 +17,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.security.SecureRandom;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -37,8 +38,8 @@ public class CuponServicioImpl implements CuponServicio {
         nuevoCupon.setDescuento(cuponDTO.descuento());
         nuevoCupon.setTipo(cuponDTO.tipo());
         nuevoCupon.setEstado(cuponDTO.estado());
-        cuponRepo.save(nuevoCupon);
-        return "Cupon creado exitosamente";
+        Cupon cuponCreado= cuponRepo.save(nuevoCupon);
+        return cuponCreado.getId();
     }
 
     @Override
@@ -168,5 +169,19 @@ public class CuponServicioImpl implements CuponServicio {
     @Override
     public List<Cupon> listarCupones() {
         return cuponRepo.findAll();
+    }
+
+    @Override
+    public Cupon obtenerCuponId(String id) throws CuponException {
+        return null;
+    }
+
+    @Override
+    public Cupon obtenerCupon(String codigo) throws CuponException {
+        Optional<Cupon> cupon = cuponRepo.buscarXCodigo(codigo);
+        if (cupon.isEmpty()) {
+            throw new CuponException("El cupon con el ID no existe");
+        }
+        return cupon.get();
     }
 }

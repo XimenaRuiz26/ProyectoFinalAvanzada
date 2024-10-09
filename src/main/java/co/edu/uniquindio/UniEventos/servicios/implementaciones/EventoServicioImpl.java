@@ -74,7 +74,7 @@ public class EventoServicioImpl implements EventoServicio {
         eventoModificado.setLocalidades(localidadesActualizadas);
 
         eventoRepo.save(eventoModificado);
-        return null;
+        return "El evento ha sido actualizado correctamente";
     }
 
     private List<Localidad> modificarLocalidades(List<Localidad> localidadesActuales ,List<LocalidadDTO> listaLocalidadesDTO) throws EventoException {
@@ -278,6 +278,17 @@ public class EventoServicioImpl implements EventoServicio {
 
     public boolean existeNombre(String nombre){
         return eventoRepo.buscarPorNombre(nombre).isPresent();
+    }
+
+    @Override
+    public void actualizarCapacidadLocalidad(Evento evento, String nombreLocalidad, int entradasVendidas) throws Exception {
+        Localidad localidad = evento.getLocalidades().stream().filter(l -> l.getNombre().equals(nombreLocalidad) ).findFirst().orElse(null);
+        if(localidad == null){
+            throw new Exception("No existe la localidad");
+        }
+        localidad.setEntradasVendidas(localidad.getEntradasVendidas()+entradasVendidas );
+        eventoRepo.save(evento);
+
     }
 
 }

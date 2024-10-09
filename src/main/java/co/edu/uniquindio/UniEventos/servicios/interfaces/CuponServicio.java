@@ -24,4 +24,7 @@ public interface CuponServicio {
 
     List<Cupon> listarCupones();
 
+    Cupon obtenerCuponId(String id) throws CuponException;
+
+    Cupon obtenerCupon(String codigo) throws CuponException;
 }

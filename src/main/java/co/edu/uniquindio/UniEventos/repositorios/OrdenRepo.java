@@ -12,11 +12,9 @@ import java.util.Optional;
 
 @Repository
 public interface OrdenRepo extends MongoRepository<Orden, String> {
-    @Query("{ id : ?0 }")
-    Optional<Orden> buscarOrdenPorId(String id);
-
     // Buscar todas las órdenes asociadas a un cliente específico
-    @Query("{ idUser : ?0 }")
-    List<Orden> findByIdCliente(ObjectId idCliente);
+    @Query("{'idUser': { $eq: ObjectId(?0) }}")
+    List<Orden> buscarPorUser(String idUser);
 
+    List<Orden> findAllByIdCuenta(String idCuenta);
 }

@@ -186,13 +186,4 @@ public class CarritoServicioImpl implements CarritoServicio {
         return carritoDetalles;
     }
 
-//    @Override
-//    public Carrito obtenerCarritoPorUsuario(String idUsuario) throws CarritoException {
-//        return null;
-//    }
-
-//    @Override
-//    public double calcularTotalCarrito(String idUsuario) throws CarritoException {
-//        return 0;
-//    }
 }

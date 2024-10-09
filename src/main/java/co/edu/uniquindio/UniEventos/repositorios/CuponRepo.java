@@ -14,11 +14,13 @@ import java.util.Optional;
 
 @Repository
 public interface CuponRepo extends MongoRepository<Cupon, String> {
-    boolean existeByCodigo(String codigo);
+    Boolean existeByCodigo(String codigo);
+
+    Optional<Cupon> buscarXCodigo(String codigo);
+
     Cupon buscarByCodigo(String code);
     @Query("{ 'estado': 'DISPONIBLE' }")
     List<Cupon> encontrarCuponesDisponible();
-
     List<Cupon> findByNombreContainingIgnoreCase(String nombre);
     List<Cupon> findByFechaVencimientoAfter(LocalDateTime fechaVencimiento);
     List<Cupon> findByFechaAperturaAfter(LocalDateTime fechaApertura);

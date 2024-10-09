@@ -12,7 +12,7 @@ import org.bson.types.ObjectId;
 public class DetalleOrden {
     @EqualsAndHashCode.Include
     private String id;
-    private ObjectId idEvento;
+    private String idEvento;
     private String nombreLocalidad;
     private int cantidad;
     private Float precio;

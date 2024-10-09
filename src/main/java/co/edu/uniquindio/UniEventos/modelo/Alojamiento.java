@@ -24,4 +24,5 @@ public class Alojamiento implements Serializable {
     private float calificacion;
     private float distanciaEvento;
     private TipoAlojamiento tipo;
+    private EstadoAlojamiento estado;
 }

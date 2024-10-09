@@ -20,11 +20,11 @@ public class Orden {
     @Id
     @EqualsAndHashCode.Include
     private String id;
-    private ObjectId idUser;
+    private String idUser;
     private LocalDateTime fecha;
     private List<DetalleOrden> items;
     private Pago pago;
-    private ObjectId idCupon;
+    private String codigoCupon;
     private float total;
     private String codigoPasarela;
 }
